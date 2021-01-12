@@ -73,8 +73,8 @@ function plusCourtChemin(string $path = './laby.txt', string $mur = "#", string 
             $combinaisons[$index] = $bas;
         }
         if(count($combinaisons) > 1){
-            $old = $actually;
-            $tmpGoTo = $goTo;
+            $old[] = $actually;
+            $tmpGoTo[] = $goTo;
             $rand = array_rand($combinaisons);
             $actually = $combinaisons[$rand];
             $goTo[] = $actually;
@@ -82,8 +82,9 @@ function plusCourtChemin(string $path = './laby.txt', string $mur = "#", string 
             $actually = array_values($combinaisons)[0];
             $goTo[] = $actually;
         }else if(count($combinaisons) === 0){
-            $actually = $old;
-            $goTo = $tmpGoTo;
+            $rand = array_rand($old);
+            $actually = $old[$rand];
+            $goTo = $tmpGoTo[$rand];
         }
     }
     
